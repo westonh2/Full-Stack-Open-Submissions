@@ -1,0 +1,29 @@
+sequenceDiagram
+
+participant user
+participant browser
+participant server
+
+user->>browser: enter note in form and submit
+browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/notes/new_note
+activate server
+Note right of server: the server creates a new note object<br>from the POST
+server->>browser: 302 - perform GET request to /exampleapp/notes
+deactivate server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+activate server
+server->>broweser: HTML document
+deactivate server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+activate server
+server->>browser: stylesheet
+deactivate server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+activate server
+server->>browser: JavaScript
+deactivate server
+
+note right of browser: browser execustes JS and we<br>are back to the start
