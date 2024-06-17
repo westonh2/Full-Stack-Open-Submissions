@@ -1,0 +1,10 @@
+sequenceDiagram
+
+participant user
+participant browser
+participant server
+
+user->>browser: enter note in form and submit
+Note right of browser: the browser js adds the note as a note object,<br>refreshes the note list with user's new note,<br>and sends the new note to the server
+
+browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
